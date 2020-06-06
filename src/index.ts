@@ -12,7 +12,7 @@ function createScene(): Scene {
 
     var light1: HemisphericLight = new HemisphericLight("light1", new Vector3(1, 1, 0), scene);
 
-    var sphere: Mesh = MeshBuilder.CreateSphere("sphere", { diameter: 5 }, scene);
+    var sphere: Mesh = MeshBuilder.CreateSphere("sphere", { diameter: 1 }, scene);
 
     addLabelToMesh(sphere);
 
