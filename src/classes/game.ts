@@ -14,13 +14,8 @@ import {
     HemisphericLight
 } from "@babylonjs/core/Lights/hemisphericLight";
 
-// Augments the scene with the debug methods
-import "@babylonjs/core/Debug/debugLayer";
-// Injects a local ES6 version of the inspector to prevent automatically relying on the none compatible version
-import "@babylonjs/inspector";
-
 //My game classes
-//import Player from './player';
+import { Player } from './player';
 //import Level from './level';
 //import GameMaterials from './materialsgen';
 
@@ -30,12 +25,12 @@ export class Game {
     private _scene: Scene;
     private _assets: any[];
     private _currentLevel: number;
-    private _player: any;
+    private _player: Player;
     private _level: any;
 
     constructor(canvasId: string) {
 
-        const canvas: any = document.getElementById(canvasId);
+        const canvas = document.getElementById(canvasId) as HTMLCanvasElement;
         this._engine = new Engine(canvas, true);
         this._scene = this.initScene(this._engine);
         //this.gameMaterials = new GameMaterials(this.scene);
@@ -51,51 +46,51 @@ export class Game {
 
     }
 
-    public get engine(): Engine {
+    get engine(): Engine {
         return this._engine;
     }
 
-    public set engine(value: Engine) {
+    set engine(value: Engine) {
         this._engine = value;
     }
 
-    public get scene(): Scene {
+    get scene(): Scene {
         return this._scene;
     }
 
-    public set scene(value: Scene) {
+    set scene(value: Scene) {
         this._scene = value;
     }
 
-    public get assets(): any[] {
+    get assets(): any[] {
         return this._assets;
     }
 
-    public set assets(value: any[]) {
+    set assets(value: any[]) {
         this._assets = value;
     }
 
-    public get currentLevel(): number {
+    get currentLevel(): number {
         return this._currentLevel;
     }
 
-    public set currentLevel(value: number) {
+    set currentLevel(value: number) {
         this._currentLevel = value;
     }
 
-    public get player(): any {
+    get player(): Player {
         return this._player;
     }
 
-    public set player(value: any) {
+    set player(value: Player) {
         this._player = value;
     }
 
-    public get level(): any {
+    get level(): any {
         return this._level;
     }
 
-    public set level(value: any) {
+    set level(value: any) {
         this._level = value;
     }
 
@@ -104,24 +99,24 @@ export class Game {
         const scene = new Scene(engine);
 
         // The camera, necessary see the world
-        const camera: UniversalCamera = new UniversalCamera("camera", new Vector3(2.5, 6, -6.5), scene);
+        const camera: UniversalCamera = new UniversalCamera('camera', new Vector3(2.5, 6, -6.5), scene);
         camera.rotation = new Vector3(Math.PI / 3.5, 0, 0)
+
         //Attach camera to the canvas
         camera.attachControl(engine.getRenderingCanvas());
 
-        const light = new HemisphericLight("light", new Vector3(0, 1, 0), scene);
+        const light = new HemisphericLight('light', new Vector3(0, 1, 0), scene);
         light.intensity = 0.7;
 
         return scene;
     }
 
     private initGame = () => {
-        //this.player = new Player(this);
+        this._player = new Player(this);
         //this.level = Level.FromInts(levels[this.currentLevel], this);
         //this.level = Level.FromInts(Level.LEVELS, this);
         //this.player.position = this.level.start.position.clone();
-        //this.player.position.y = 2;
-        //this.scene.debugLayer.show();
+        this.player.position.y = 2;
     }
 
 }
