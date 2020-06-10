@@ -23,20 +23,14 @@ import {
     Texture, CubeTexture
 } from '@babylonjs/core/Materials/Textures';
 
-//import groundTexture from '../assets/textures/ground.jpg'
-import * as groundTexture from '../assets/ground.jpg';
-
-
-//import groundTexture from '../assets/textures/ground.jpg'
-// import spikesTexture from '../assets/textures/spikesTexture.jpg';
-// import appleTexture from '../assets/textures/appleTexture.jpg';
-// import keyTexture from '../assets/textures/keyTexture.jpg';
+import groundTexture from '../assets/ground.jpg';
+import spikesTexture from '../assets/spikesTexture.jpg';
+import appleTexture from '../assets/appleTexture.jpg';
+import keyTexture from '../assets/keyTexture.jpg';
 
 export class AppearenceGenerator {
 
     static playerMaterial = (scene: Scene) => {
-
-        console.log('groundTexture ', groundTexture)
 
         const playerMaterial = new StandardMaterial("playerMaterial", scene);
         playerMaterial.diffuseColor = new Color3(1, 1, 1);
@@ -66,25 +60,6 @@ export class AppearenceGenerator {
 
 }
 
-
-// const playerMaterialGen = function (scene) {
-//     const playerMaterial = new StandardMaterial("playerMaterial", scene);
-//     playerMaterial.diffuseColor = new Color3(1, 1, 1);
-//     playerMaterial.emissiveColor = new Color3(1, 1, 1);
-//     playerMaterial.alpha = 0.1;
-
-//     const color = Color3.FromInts(50, 50, 200);
-//     playerMaterial.emissiveFresnelParameters = new FresnelParameters();
-//     playerMaterial.emissiveFresnelParameters.bias = 0.6;
-//     playerMaterial.emissiveFresnelParameters.power = 2;
-//     playerMaterial.emissiveFresnelParameters.leftColor = Color3.Black();
-//     playerMaterial.emissiveFresnelParameters.rightColor = color;
-//     playerMaterial.opacityFresnelParameters = new FresnelParameters();
-//     playerMaterial.opacityFresnelParameters.leftColor = Color3.White();
-//     playerMaterial.opacityFresnelParameters.rightColor = Color3.Black();
-//     return playerMaterial;
-// }
-
 // const groundMaterialGen = function (scene) {
 //     const groundMaterial = new StandardMaterial("groundMaterial", scene);
 //     groundMaterial.diffuseTexture = new Texture(groundTexture, scene);
@@ -95,7 +70,7 @@ export class AppearenceGenerator {
 //     const skybox = Mesh.CreateBox("skyBox", 1000.0, scene);
 //     const skyboxMaterial = new StandardMaterial("skyBox", scene);
 //     skyboxMaterial.backFaceCulling = false;
-//     skyboxMaterial.reflectionTexture = new CubeTexture('src/assets/skybox/SkyBoxTexture', scene);
+//     skyboxMaterial.reflectionTexture = new CubeTexture('src/assets/SkyBoxTexture', scene);
 //     skyboxMaterial.reflectionTexture.coordinatesMode = Texture.SKYBOX_MODE;
 //     skyboxMaterial.diffuseColor = new Color3(0, 0, 0);
 //     skyboxMaterial.specularColor = new Color3(0, 0, 0);

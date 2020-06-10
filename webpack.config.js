@@ -12,7 +12,13 @@ module.exports = {
     module: {
         rules: [
             { test: /\.tsx?$/, loader: "ts-loader" },
-            { test: /\.(png|svg|jpg|gif)$/,loader: 'file-loader'}
+            {
+                test: /\.(png|svg|jpg|gif)$/,
+                loader: 'file-loader',
+                options: {
+                    name: './src/assets/[name].[ext]'
+                }
+            }
         ]
     },
     externals: {
