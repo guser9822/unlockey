@@ -16,8 +16,8 @@ import {
 
 //My game classes
 import { Player } from './player';
+import { AppearenceGenerator } from "./appearencegenerator";
 //import Level from './level';
-//import GameMaterials from './materialsgen';
 
 export class Game {
 
@@ -27,13 +27,13 @@ export class Game {
     private _currentLevel: number;
     private _player: Player;
     private _level: any;
+    private _skyBox: any;
 
     constructor(canvasId: string) {
 
         const canvas = document.getElementById(canvasId) as HTMLCanvasElement;
         this._engine = new Engine(canvas, true);
         this._scene = this.initScene(this._engine);
-        //this.gameMaterials = new GameMaterials(this.scene);
         this._assets = [];
         this._currentLevel = 1;
         this._player = null;
@@ -107,6 +107,8 @@ export class Game {
 
         const light = new HemisphericLight('light', new Vector3(0, 1, 0), scene);
         light.intensity = 0.7;
+
+        this._skyBox = AppearenceGenerator.createSkyBox(scene);
 
         return scene;
     }

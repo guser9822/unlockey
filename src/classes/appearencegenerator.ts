@@ -32,7 +32,7 @@ export class AppearenceGenerator {
 
     static playerMaterial = (scene: Scene) => {
 
-        const playerMaterial = new StandardMaterial("playerMaterial", scene);
+        const playerMaterial = new StandardMaterial('playerMaterial', scene);
         playerMaterial.diffuseColor = new Color3(1, 1, 1);
         playerMaterial.emissiveColor = new Color3(1, 1, 1);
         playerMaterial.alpha = 0.1;
@@ -58,52 +58,59 @@ export class AppearenceGenerator {
         });
     }
 
+    static appleMaterial = (scene: Scene) => {
+        const appleMaterial = new StandardMaterial('appleMaterial', scene);
+        appleMaterial.diffuseTexture = new Texture(appleTexture, scene);
+        return appleMaterial;
+    }
+
+    static appleMesh = (scene: Scene) => {
+        return Mesh.CreateTorusKnot('knot', 0.25, 0.05, 64, 64, 2, 3, scene);
+    }
+
+    static spikesMaterial = (scene: Scene) => {
+        const spikesMaterial = new StandardMaterial('spikesMaterial', scene);
+        spikesMaterial.diffuseTexture = new Texture(spikesTexture, scene);
+        return spikesMaterial;
+    }
+
+    static spikesMesh = (scene: Scene) => {
+        return Mesh.CreateCylinder('cylinder', 0.5, 0.5, 0.5, 6, 1, scene);
+    }
+
+    static keyMaterial(scene: Scene) {
+        const keyMaterial = new StandardMaterial('keyMaterial', scene);
+        keyMaterial.diffuseTexture = new Texture(keyTexture, scene);
+        return keyMaterial;
+    }
+
+    static keyMesh = (scene: Scene) => {
+        return Mesh.CreateTorus("key", 0.75, 0.25, 10, scene);
+    }
+
+    static blockMaterial(scene: Scene) {
+        const groundMaterial = new StandardMaterial('groundMaterial', scene);
+        groundMaterial.diffuseTexture = new Texture(groundTexture, scene);
+        return groundMaterial;
+    }
+
+    static blockMesh = (scene: Scene) => {
+        return VertexData.CreateBox({ size: 1, sideOrientation: Mesh.DEFAULTSIDE });
+    }
+
+    static createSkyBox = (scene) => {
+        const skybox = Mesh.CreateBox('skyBox', 1000.0, scene);
+        const skyboxMaterial = new StandardMaterial('skyBox', scene);
+        skyboxMaterial.backFaceCulling = false;
+        skyboxMaterial.reflectionTexture = new CubeTexture('src/assets/SkyBoxTexture', scene);
+        skyboxMaterial.reflectionTexture.coordinatesMode = Texture.SKYBOX_MODE;
+        skyboxMaterial.diffuseColor = new Color3(0, 0, 0);
+        skyboxMaterial.specularColor = new Color3(0, 0, 0);
+        skybox.material = skyboxMaterial;
+        return skybox;
+    }
+
 }
 
-// const groundMaterialGen = function (scene) {
-//     const groundMaterial = new StandardMaterial("groundMaterial", scene);
-//     groundMaterial.diffuseTexture = new Texture(groundTexture, scene);
-//     return groundMaterial;
-// }
 
-// const skyBox = function (scene) {
-//     const skybox = Mesh.CreateBox("skyBox", 1000.0, scene);
-//     const skyboxMaterial = new StandardMaterial("skyBox", scene);
-//     skyboxMaterial.backFaceCulling = false;
-//     skyboxMaterial.reflectionTexture = new CubeTexture('src/assets/SkyBoxTexture', scene);
-//     skyboxMaterial.reflectionTexture.coordinatesMode = Texture.SKYBOX_MODE;
-//     skyboxMaterial.diffuseColor = new Color3(0, 0, 0);
-//     skyboxMaterial.specularColor = new Color3(0, 0, 0);
-//     skybox.material = skyboxMaterial;
-//     return skybox;
-// }
 
-// const spikesMaterialGen = function (scene) {
-//     const spikesMaterial = new StandardMaterial("spikesMaterial", scene);
-//     spikesMaterial.diffuseTexture = new Texture(spikesTexture, scene);
-//     return spikesMaterial;
-// }
-
-// const appleMaterialGen = function (scene) {
-//     const appleMaterial = new StandardMaterial("appleMaterial", scene);
-//     appleMaterial.diffuseTexture = new Texture(appleTexture, scene);
-//     return appleMaterial;
-// }
-
-// const keyMaterialGen = function (scene) {
-//     const keyMaterial = new StandardMaterial("keyMaterial", scene);
-//     keyMaterial.diffuseTexture = new Texture(keyTexture, scene);
-//     return keyMaterial;
-// }
-
-// const GameMaterials = function (scene) {
-//     this.playerMaterial = playerMaterialGen(scene);
-//     this.groundMaterial = groundMaterialGen(scene);
-//     this.spikesMaterial = spikesMaterialGen(scene);
-//     this.appleMaterial = appleMaterialGen(scene);
-//     this.keyMaterial = keyMaterialGen(scene);
-//     this.skyBox = skyBox(scene);
-// }
-
-// GameMaterials.prototype.constructor = GameMaterials;
-// export default GameMaterials;

@@ -15,10 +15,10 @@ export class Player extends GameObject {
         this._directions = [0, 0];
         this._rotations = [0, 0];
 
-        // //BabylonJS manage mesh vertex thorugh a VertexData
+        // BabylonJS manage mesh vertex thorugh a VertexData
         const vertexData = AppearenceGenerator.playerMesh();
 
-        // //Our player geometry became a sphere
+        // Our player geometry became a sphere
         vertexData.applyToMesh(this);
 
         this.position.y = Player.START_HEIGHT;
