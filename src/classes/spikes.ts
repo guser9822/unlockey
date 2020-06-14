@@ -8,6 +8,8 @@ import { AppearenceGenerator } from './appearencegenerator';
 export class Spikes extends GameObject {
 
     private _sharpPart: Mesh;
+    private _number: number;
+
 
     constructor(game: Game, number: number) {
         super('spikes', game);
@@ -23,6 +25,14 @@ export class Spikes extends GameObject {
     set sharpPart(value: Mesh) {
         this._sharpPart = value;
     }
+    
+    get number(): number {
+        return this._number;
+    }
+
+    set number(value: number) {
+        this._number = value;
+    }
 
     updateMaterial = (mat) => {
         this._sharpPart.material = mat
@@ -33,23 +43,3 @@ export class Spikes extends GameObject {
     }
 
 }
-
-// const Spikes = function (game, number) {
-//     GameObject.call(this, 'spikes', game);
-//     this.sharpPart = Mesh.CreateCylinder("cylinder", 0.5, 0.5, 0.5, 6, 1, this.getScene());
-//     this.sharpPart.parent = this;
-//     this.sharpPart.material = game.gameMaterials.spikesMaterial;
-
-// };
-
-// Spikes.prototype = Object.create(GameObject.prototype);
-// Spikes.prototype.constructor = Spikes;
-// Spikes.prototype.updateMaterial = function (mat) {
-//     this.sharpPart.material = mat
-// };
-
-// Spikes.prototype.delete = function () {
-//     this.dispose();
-// }
-
-// export default Spikes;
