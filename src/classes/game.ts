@@ -122,15 +122,3 @@ export class Game {
     }
 
 }
-
-// Game.prototype._initGame = function () {
-//     this.player = new Player(this);
-//     //this.level = Level.FromInts(levels[this.currentLevel], this);
-//     this.level = Level.FromInts(Level.LEVELS, this);
-//     this.player.position = this.level.start.position.clone();
-//     this.player.position.y = 2;
-//     //this.scene.debugLayer.show();
-// }
-
-
-// export default Game;
